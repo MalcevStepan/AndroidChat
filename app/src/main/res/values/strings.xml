@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ChatC</string>
+    <string name="exit">Exit</string>
+    <string name="send">Send</string>
+    <string name="enter">Ввод</string>
+    <string name="ip_111_111_1_1">xxx.xxx.x.x</string>
+    <string name="port">port</string>
+    <string name="connection">CONNECT</string>
+    <string name="waiting">Ожидание подключения с сервером</string>
+    <string name="connect">Connect</string>
+    <string name="enter_the_server_ip">Enter the server ip</string>
+    <string name="eport">Port</string>
+    <string name="nickname">Nickname</string>
+    <string name="title_activity_main3">Main3Activity</string>
+    <string name="change">Change</string>
+    <string name="login_or_email">login or email</string>
+    <string name="password">password</string>
+    <string name="welcome">Welcome!</string>
+    <string name="login">LogIn</string>
+</resources>
