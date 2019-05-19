@@ -1,6 +1,7 @@
 package com.example.test;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,6 +23,13 @@ public class TCP extends AppCompatActivity {
     RadioButton client;
     Animation animation;
     Button connect;
+    String SAVED_TEXT = "saved_text";
+    String SAVED_PORT = "saved_port";
+    String SAVED_IP = "saved_ip";
+    SharedPreferences preferences;
+    String NICK;
+    String PORT;
+    String IP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +58,14 @@ public class TCP extends AppCompatActivity {
                 client.startAnimation(animation);
             }
         });
+        ip.post(new Runnable() {
+            @Override
+            public void run() {
+                ip.setText(loadIp());
+                port.setText(loadPort());
+                nick.setText(loadText());
+            }
+        });
         connect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,5 +79,37 @@ public class TCP extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void saveText() {
+        preferences = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(SAVED_TEXT, nick.getText().toString());
+        editor.putString(SAVED_PORT, port.getText().toString());
+        editor.putString(SAVED_IP, ip.getText().toString());
+        editor.apply();
+    }
+
+    public String loadText() {
+        preferences = getPreferences(MODE_PRIVATE);
+        NICK = preferences.getString(SAVED_TEXT, "");
+        return NICK;
+    }
+
+    public String loadIp() {
+        preferences = getPreferences(MODE_PRIVATE);
+        IP = preferences.getString(SAVED_IP, "");
+        return IP;
+    }
+
+    public String loadPort() {
+        preferences = getPreferences(MODE_PRIVATE);
+        PORT = preferences.getString(SAVED_PORT, "");
+        return PORT;
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        saveText();
     }
 }
