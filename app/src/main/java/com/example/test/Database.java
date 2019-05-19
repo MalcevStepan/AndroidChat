@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
-public class DBHelper extends SQLiteOpenHelper {
+public class Database extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION=1;
     public static final String DATABASE_NAME="ClientData";
     public static final String DATABASE_CONTACTS="contacts";
@@ -15,7 +15,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String KEY_LOGIN="login";
     public static final String KEY_PASSWORD="password";
 
-    public DBHelper(@Nullable Context context) {
+    public Database(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
     }
