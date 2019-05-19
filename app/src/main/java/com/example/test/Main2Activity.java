@@ -10,52 +10,40 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.net.DatagramSocket;
+import java.net.SocketException;
 
 public class Main2Activity extends AppCompatActivity{
     public static EditText nick;
-    public static EditText ip;
     public static EditText port;
     public static Button connect;
     public static String SAVED_TEXT = "saved_text";
-    public static String SAVED_IP="saved_ip";
     public static String SAVED_PORT="saved_port";
    public static SharedPreferences preferences;
     public static String NICK;
-    public static String IP;
     public static String PORT;
-public static TextView enter;
 public static TextView eport;
+public static DatagramSocket ds;
 public static TextView nickname;
+Animation animation;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        ip=findViewById(R.id.ip);
+
         nick=findViewById(R.id.nick);
         port=findViewById(R.id.port);
         connect=findViewById(R.id.connect);
-
-        enter=findViewById(R.id.enter);
         eport=findViewById(R.id.eport);
         nickname=findViewById(R.id.enick);
-        final Animation animation= AnimationUtils.loadAnimation(this,R.anim.anim);
-        final Animation animation1= AnimationUtils.loadAnimation(this,R.anim.anim1);
-        final Animation animation2= AnimationUtils.loadAnimation(this,R.anim.anim2);
-        final Animation animation3= AnimationUtils.loadAnimation(this,R.anim.anim3);
-        final Animation animation4= AnimationUtils.loadAnimation(this,R.anim.anim4);
-                enter.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        enter.startAnimation(animation1);
-                        ip.startAnimation(animation1);
-                    }
-                });
+       animation= AnimationUtils.loadAnimation(this,R.anim.anim);
+
 
                 eport.post(new Runnable() {
                     @Override
                     public void run() {
-                        eport.startAnimation(animation2);
-                        port.startAnimation(animation2);
+                        eport.startAnimation(animation);
+                        port.startAnimation(animation);
                     }
                 });
 
@@ -63,14 +51,14 @@ public static TextView nickname;
                 nickname.post(new Runnable() {
                     @Override
                     public void run() {
-                        nickname.startAnimation(animation3);
-                        nick.startAnimation(animation3);
+                        nickname.startAnimation(animation);
+                        nick.startAnimation(animation);
                     }
                 });
                 connect.post(new Runnable() {
                     @Override
                     public void run() {
-                        connect.startAnimation(animation4);
+                        connect.startAnimation(animation);
                     }
                 });
 
@@ -80,12 +68,6 @@ public static TextView nickname;
             @Override
             public void run() {
            nick.setText(loadText());
-            }
-        });
-        ip.post(new Runnable() {
-            @Override
-            public void run() {
-           ip.setText(loadIP());
             }
         });
         port.post(new Runnable() {
@@ -98,8 +80,19 @@ public static TextView nickname;
             @Override
             public void onClick(View view) {
                 saveText();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            ds=new DatagramSocket(Integer.parseInt(port.getText().toString()));
+                        } catch (SocketException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
                 final Intent intent=new Intent(Main2Activity.this,MainActivity.class);
               startActivity(intent);
+              finish();
             }
         });
     }
@@ -107,7 +100,6 @@ public static TextView nickname;
         preferences=getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor= preferences.edit();
         editor.putString(SAVED_TEXT,nick.getText().toString());
-        editor.putString(SAVED_IP,ip.getText().toString());
      editor.putString(SAVED_PORT,port.getText().toString());
         editor.apply();
     }
@@ -115,11 +107,6 @@ public static TextView nickname;
         preferences=getPreferences(MODE_PRIVATE);
 NICK=preferences.getString(SAVED_TEXT,"");
 return NICK;
-    }
-    public String loadIP(){
-        preferences=getPreferences(MODE_PRIVATE);
-        IP=preferences.getString(SAVED_IP,"");
-        return IP;
     }
     public String loadPort(){
         preferences=getPreferences(MODE_PRIVATE);

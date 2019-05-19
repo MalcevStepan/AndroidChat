@@ -17,6 +17,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
+        android:inputType="textNoSuggestions"
         android:hint="@string/enter"
         android:textColorHint="@color/colorPrimary"/>
 
@@ -31,19 +32,6 @@
           android:layout_height="wrap_content" />
 
   </RelativeLayout>
-      <android.support.design.widget.FloatingActionButton
-          android:id="@+id/fab"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentRight="true"
-          android:layout_alignParentBottom="true"
-          app:srcCompat="@drawable/disconnected"
-          android:layout_margin="16dp"
-          app:backgroundTint="@color/colorPrimary"
-          app:borderWidth="5dp"
-          app:elevation="10dp"
-
-          />
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/editButton"
         android:layout_width="wrap_content"
@@ -96,8 +84,21 @@
         app:elevation="10dp"
         app:srcCompat="@drawable/shutdown"
         />
+  <android.support.design.widget.FloatingActionButton
+      android:id="@+id/fab"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_alignParentBottom="true"
+      app:srcCompat="@drawable/disconnected"
+      android:layout_margin="16dp"
+      app:backgroundTint="@color/colorPrimary"
+      app:borderWidth="5dp"
+      app:elevation="10dp"
+
+      />
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/relative"
         android:layout_marginLeft="10dp">

@@ -1,5 +1,8 @@
 package com.example.test;
 
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +18,7 @@ public static EditText login;
 public static EditText password;
 public Button loginB;
 public static String loginText;
+DBHelper dbHelper;
 public static String passwordText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +30,19 @@ public static String passwordText;
         login=findViewById(R.id.login);
         password=findViewById(R.id.password);
         loginB=findViewById(R.id.loginbutton);
+        dbHelper=new DBHelper(this);
         loginB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginText=login.getText().toString();
-                passwordText=password.getText().toString();
+              /*  loginText=login.getText().toString();
+             passwordText=password.getText().toString();
+             SQLiteDatabase sqLiteDatabase=dbHelper.getWritableDatabase();
+             ContentValues contentValues=new ContentValues();
+             contentValues.put(DBHelper.KEY_LOGIN,loginText);
+             contentValues.put(DBHelper.KEY_PASSWORD,passwordText);
+               sqLiteDatabase.insert(DBHelper.DATABASE_CONTACTS,null,contentValues);*/
+                Intent intent=new Intent(LogInLayout.this,TCPUDP.class);
+                startActivity(intent);
             }
         });
     }

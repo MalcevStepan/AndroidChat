@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fillAfter="true"
-    android:shareInterpolator="true">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:fillAfter="true"
+android:shareInterpolator="true">
+    <alpha
+        android:duration="1300"
+        android:fromAlpha="1.0"
+        android:toAlpha="0.0">
+
+    </alpha>
 <translate
     android:fromYDelta="0"
-    android:toYDelta="850"
-    android:duration="1000">
+    android:toYDelta="170"
+    android:duration="342">
 </translate>
 </set>

@@ -9,17 +9,21 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/chat"
-        android:label="@string/app_name"
+        android:label="Vibre"
         android:roundIcon="@drawable/chat"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LogInLayout"></activity>
+        <activity android:name=".Server"></activity>
+        <activity android:name=".Client" />
+        <activity android:name=".TCP" />
+        <activity android:name=".TCPUDP" />
+        <activity android:name=".Main2Activity" />
         <activity
             android:name=".Main3Activity"
-            android:label="@string/title_activity_main3"
+            android:label="Vibre"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Main2Activity">
+        <activity android:name=".LogInLayout">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

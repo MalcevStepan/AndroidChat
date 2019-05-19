@@ -9,7 +9,7 @@
     <string name="waiting">Ожидание подключения с сервером</string>
     <string name="connect">Connect</string>
     <string name="enter_the_server_ip">Enter the server ip</string>
-    <string name="eport">Port</string>
+    <string name="eport">YourPort</string>
     <string name="nickname">Nickname</string>
     <string name="title_activity_main3">Main3Activity</string>
     <string name="change">Change</string>
@@ -17,4 +17,7 @@
     <string name="password">password</string>
     <string name="welcome">Welcome!</string>
     <string name="login">LogIn</string>
+    <string name="choose_your_connection">Choose your connection</string>
+    <string name="next">next</string>
+    <string name="null_if_server">null if server</string>
 </resources>

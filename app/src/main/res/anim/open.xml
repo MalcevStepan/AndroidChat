@@ -2,9 +2,26 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android"
     android:fillAfter="true"
     android:shareInterpolator="true">
+    <rotate
+        android:duration="400"
+        android:fromDegrees="30"
+        android:interpolator="@android:anim/linear_interpolator"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:repeatCount="4"
+        android:repeatMode="reverse"
+        android:toDegrees="0">
+
+    </rotate>
+    <alpha
+        android:duration="500"
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0">
+
+    </alpha>
     <translate
-        android:fromYDelta="850"
+        android:fromYDelta="170"
         android:toYDelta="0"
-        android:duration="1000">
+        android:duration="245">
     </translate>
 </set>
